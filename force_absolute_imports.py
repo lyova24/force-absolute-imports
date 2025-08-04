@@ -1,6 +1,7 @@
 import ast
 import sys
 import argparse
+import re
 from pathlib import Path
 
 if not hasattr(ast, "unparse"):
@@ -60,6 +61,7 @@ def convert_relative_to_absolute_imports(file_path: Path, root_dir: Path) -> boo
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root-dir", required=False, default=".", help="path to root directory (for example, ./src)")
+    parser.add_argument("--ignore", action="append", default=[], help="regex pattern to ignore file paths")
     parser.add_argument("files", nargs="+", help="files to be processed (pre-commit passing it)")
     args = parser.parse_args()
 
@@ -68,15 +70,21 @@ def main():
         print(f"err: {root_dir} is not a directory")
         sys.exit(1)
 
+
     changed = 0
     scanned = 0
+    ignore_patterns = [re.compile(pattern) for pattern in args.ignore]
     for file in args.files:
         path = Path(file)
+
+        str_path = str(path)
+        if any(pat.search(str_path) for pat in ignore_patterns):
+            continue
+
         if not path.suffix == ".py":
             continue
         scanned += 1
         if convert_relative_to_absolute_imports(path, root_dir):
-            print(f"converted: {file}")
             changed += 1
 
     print(f"done! scanned: {scanned}, changed: {changed}")

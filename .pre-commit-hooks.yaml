@@ -4,3 +4,4 @@
   entry: force-absolute-imports
   language: python
   types: [python]
+  additional_dependencies: [libcst>=1.0.0]

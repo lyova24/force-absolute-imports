@@ -1,11 +1,17 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
-    name="force_absolute_imports",
-    py_modules=["force_absolute_imports"],
+    name='force-absolute-imports',
+    version='0.0.3',
+    py_modules=['main'],
+    packages=find_packages(where=''),
     entry_points={
-        "console_scripts": [
-            "force-absolute-imports = force_absolute_imports:main",
+        'console_scripts': [
+            'force-absolute-imports=main:main',
         ],
     },
+    python_requires='>=3.10',
+    install_requires=[
+        'libcst>=1.0.0',
+    ],
 )

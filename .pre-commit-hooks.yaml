@@ -1,0 +1,6 @@
+- id: force-absolute-imports
+  name: Force relative imports to absolute
+  description: Convert relative imports to absolute
+  entry: python force_absolute_imports.py
+  language: python
+  types: [python]

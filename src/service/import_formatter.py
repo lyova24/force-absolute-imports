@@ -25,9 +25,11 @@ class ImportFormatter:
         exit_code = 0
         scanned, changed = 0, 0
         for file_path in self.file_paths:
-            if not file_path.is_file() or \
-                    not file_path.name.endswith(".py") or \
-                    any(pat.search(str(file_path)) for pat in self.ignore_patterns):
+            if (
+                not file_path.is_file()
+                or not file_path.name.endswith(".py")
+                or any(pat.search(str(file_path)) for pat in self.ignore_patterns)
+            ):
                 log.debug(f"ignored: {file_path};")
                 continue
 

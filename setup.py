@@ -1,17 +1,17 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='shrimport',
-    version='0.0.9',
-    py_modules=['main'],
-    packages=find_packages(where=''),
+    name="shrimport",
+    version="0.0.9",
+    py_modules=["main"],
+    packages=find_packages(where=""),
     entry_points={
-        'console_scripts': [
-            'shrimport=main:main',
+        "console_scripts": [
+            "shrimport=main:main",
         ],
     },
-    python_requires='>=3.10',
+    python_requires=">=3.10",
     install_requires=[
-        'libcst>=1.0.0',
+        "libcst>=1.0.0",
     ],
 )

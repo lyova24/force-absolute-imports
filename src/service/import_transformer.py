@@ -18,7 +18,11 @@ class ImportTransformer(libcst.CSTTransformer):
         self.root_dir = root_dir
         self.modified = False
 
-    def leave_ImportFrom(self, original_node: "ImportFrom", updated_node: "ImportFrom") -> "ImportFrom":
+    def leave_ImportFrom(
+        self,
+        original_node: "ImportFrom",
+        updated_node: "ImportFrom",
+    ) -> "ImportFrom":
         if not original_node.relative:
             return original_node
 
@@ -40,7 +44,7 @@ class ImportTransformer(libcst.CSTTransformer):
             full_parts = base_parts
 
         package_parts = current_parts[:-1]
-        if full_parts[:len(package_parts)] == package_parts:
+        if full_parts[: len(package_parts)] == package_parts:
             return original_node
 
         new_module_str = ".".join(full_parts)

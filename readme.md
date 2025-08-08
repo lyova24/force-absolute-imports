@@ -17,7 +17,7 @@
 ##### Put this to your .pre-commit-config.yaml
 ```yaml
   - repo: https://github.com/lyova24/shrimport
-    rev: v0.0.5 # or any other version-tag/commit
+    rev: v0.0.8 # or any other version-tag/commit
     hooks:
       - id: shrimport
 ```
@@ -26,15 +26,17 @@
 ```shell
 # `--root-dir` argument to specify root dir for your imports
 # `--ignore` argument to specify regex pattern of filepaths to ignore  (several values possible)
+# `--verbose` argument to output extra extra information on hook's fail
 ```
 
 ##### Example of arguments usage in your .pre-commit-config.yaml
 ```yaml
   - repo: https://github.com/lyova24/shrimport
-    rev: v0.0.5
+    rev: v0.0.8
     hooks:
       - id: shrimport
         args:
           - '--root-dir=./app' # example of --root-dir usage
           - '--ignore=test/*' # example of --ignore usage
+          - '--verbose' # example of --verbose usage
 ```

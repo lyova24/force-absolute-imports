@@ -28,6 +28,7 @@
 # `-R / --root-dir` argument to specify root dir for your imports
 # `-i / --ignore` argument to specify regex pattern of filepaths to ignore  (several values possible)
 # `-v / --verbose` argument to output extra information on hook's execution (notice: pre-commit also have this arg)
+# `-d / --dry-run` argument to execute hook without changing the code
 ```
 
 ##### Example of arguments usage in your .pre-commit-config.yaml
@@ -40,4 +41,5 @@
           - '--root-dir=./app' # or '-R=./app'
           - '--ignore=test/*' # or '-i=test/*'
           - '--verbose' # or '-v'
+          - '--dry-run' # or '-d'
 ```

@@ -8,6 +8,7 @@ from src.utils import get_args
 class Config:
     root_dir: str = "./"
     is_verbose: bool = False
+    is_dry_run: bool = False
     file_paths: list[str] = field(default_factory=list)
     ignored_paths: list[str] = field(default_factory=list)
 
@@ -16,7 +17,7 @@ class Config:
         args = get_args()
         initial_values = {}
         for f in fields(cls):
-            if value := getattr(args, f.name):
+            if value := getattr(args, f.name, None):
                 initial_values[f.name] = value
             else:
                 if f.default_factory is not dataclasses.MISSING:

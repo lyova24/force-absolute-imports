@@ -17,7 +17,7 @@
 ##### Put this to your .pre-commit-config.yaml
 ```yaml
   - repo: https://github.com/lyova24/shrimport
-    rev: v0.0.4 # or any other version-tag/commit
+    rev: v0.0.5 # or any other version-tag/commit
     hooks:
       - id: shrimport
 ```
@@ -31,7 +31,7 @@
 ##### Example of arguments usage in your .pre-commit-config.yaml
 ```yaml
   - repo: https://github.com/lyova24/shrimport
-    rev: v0.0.4
+    rev: v0.0.5
     hooks:
       - id: shrimport
         args:

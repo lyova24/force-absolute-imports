@@ -5,10 +5,15 @@
       pre-commit-hook for <a href="https://github.com/pre-commit/pre-commit">pre-commit</a>
       to format relative imports as absolute ones in Python
     </p>
-    <a href="https://github.com/lyova24/shrimport/tags">
-      <img src="https://img.shields.io/github/v/release/lyova24/shrimport" alt="Latest Release">
-      <img src="https://img.shields.io/github/last-commit/lyova24/shrimport/main" alt="Latest Commit">
-    </a>
+    <p>
+        <img src="https://img.shields.io/github/v/release/lyova24/shrimport" alt="Latest Release">
+        <img src="https://img.shields.io/github/last-commit/lyova24/shrimport/main" alt="Latest Commit">
+    </p>
+    <p>
+        <img src="https://github.com/lyova24/shrimport/actions/workflows/unit-test.yml/badge.svg?branch=main" alt="Workflow status badge" loading="lazy" height="20">
+        <img src="https://github.com/lyova24/shrimport/actions/workflows/execution-test.yml/badge.svg?branch=main" alt="Workflow status badge" loading="lazy" height="20">
+    </p>
+
 </div>
 
 

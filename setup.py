@@ -14,4 +14,9 @@ setup(
     install_requires=[
         "libcst>=1.0.0",
     ],
+    extras_require={
+        "test": [
+            "pytest>=7.0.0",
+        ],
+    },
 )

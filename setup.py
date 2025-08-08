@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="shrimport",
-    version="0.0.9",
+    version="0.1.0",
     py_modules=["main"],
     packages=find_packages(where=""),
     entry_points={

@@ -4,17 +4,18 @@ from re import compile
 import libcst as cst
 
 from src.config import Config
+from src.logger import get_logger
 from src.utils import (
     get_path_from_str,
     get_paths_from_list,
     exit_if_path_is_not_a_dir,
 )
 from .import_transformer import ImportTransformer
-from src.logger import log
 
 
 class ImportFormatter:
     def __init__(self, config: Config):
+        self.logger = get_logger()
         self.root_dir = get_path_from_str(config.root_dir).resolve()
         self.file_paths = get_paths_from_list(config.file_paths)
         self.ignore_patterns = list(set([compile(pattern) for pattern in config.ignored_paths]))
@@ -30,7 +31,7 @@ class ImportFormatter:
                 or not file_path.name.endswith(".py")
                 or any(pat.search(str(file_path)) for pat in self.ignore_patterns)
             ):
-                log.debug(f"ignored: {file_path};")
+                self.logger.debug(f"ignored: {file_path};")
                 continue
 
             scanned += 1
@@ -48,10 +49,10 @@ class ImportFormatter:
 
         if transformer.modified:
             if self.is_dry_run:
-                log.warning(f"disapproved: {file_path};")
+                self.logger.warning(f"disapproved: {file_path};")
             else:
-                log.warning(f"changed {file_path};")
+                self.logger.warning(f"changed {file_path};")
                 file_path.write_text(modified_tree.code, encoding="utf-8")
             return True
-        log.debug(f"approved {file_path};")
+        self.logger.debug(f"approved {file_path};")
         return False

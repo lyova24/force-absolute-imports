@@ -1,5 +1,6 @@
 import dataclasses
 from dataclasses import dataclass, field, fields
+from functools import lru_cache
 
 from src.utils import get_args
 
@@ -27,4 +28,6 @@ class Config:
         return cls(**initial_values)
 
 
-config: Config = Config.get_from_arguments()
+@lru_cache(1)
+def get_config() -> Config:
+    return Config.get_from_arguments()

@@ -2,11 +2,12 @@
     <img src="./docs/images/shrimport.png" width="128" alt="Shrimport Logo">
     <h3>Shrimport</h3>
     <p>
-      pre-commit hook for <a href="https://github.com/pre-commit/pre-commit">pre-commit</a>
+      pre-commit-hook for <a href="https://github.com/pre-commit/pre-commit">pre-commit</a>
       to format relative imports as absolute ones in Python
     </p>
     <a href="https://github.com/lyova24/shrimport/tags">
-      <img src="https://img.shields.io/github/v/tag/lyova24/shrimport" alt="Latest Tag">
+      <img src="https://img.shields.io/github/v/release/lyova24/shrimport" alt="Latest Release">
+      <img src="https://img.shields.io/github/last-commit/lyova24/shrimport/main" alt="Latest Commit">
     </a>
 </div>
 
@@ -24,9 +25,9 @@
 
 ##### Arguments
 ```shell
-# `--root-dir` argument to specify root dir for your imports
-# `--ignore` argument to specify regex pattern of filepaths to ignore  (several values possible)
-# `--verbose` argument to output extra extra information on hook's fail
+# `-R / --root-dir` argument to specify root dir for your imports
+# `-i / --ignore` argument to specify regex pattern of filepaths to ignore  (several values possible)
+# `-v / --verbose` argument to output extra information on hook's execution (notice: pre-commit also have this arg)
 ```
 
 ##### Example of arguments usage in your .pre-commit-config.yaml
@@ -36,7 +37,7 @@
     hooks:
       - id: shrimport
         args:
-          - '--root-dir=./app' # example of --root-dir usage
-          - '--ignore=test/*' # example of --ignore usage
-          - '--verbose' # example of --verbose usage
+          - '--root-dir=./app' # or '-R=./app'
+          - '--ignore=test/*' # or '-i=test/*'
+          - '--verbose' # or '-v'
 ```

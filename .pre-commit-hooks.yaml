@@ -1,5 +1,5 @@
 - id: shrimport
-  name: Force relative imports to absolute
+  name: Shrimport
   description: Convert relative imports to absolute
   entry: shrimport
   language: python

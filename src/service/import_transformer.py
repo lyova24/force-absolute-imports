@@ -3,8 +3,9 @@ from typing import TYPE_CHECKING
 
 import libcst
 
-from utils import get_module_path, make_module_attr
-from utils.module import get_full_module_name
+from src.utils import get_module_path
+from src.utils import make_module_attr
+from src.utils.module import get_full_module_name
 
 if TYPE_CHECKING:
     from libcst import ImportFrom

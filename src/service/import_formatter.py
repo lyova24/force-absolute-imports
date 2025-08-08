@@ -1,24 +1,23 @@
 from pathlib import Path
-from typing import TYPE_CHECKING
+from re import compile
 
 import libcst as cst
 
+from src.config import Config
+from src.utils import (
+    get_path_from_str,
+    get_paths_from_list,
+    exit_if_path_is_not_a_dir,
+)
 from .import_transformer import ImportTransformer
-
-if TYPE_CHECKING:
-    from re import Pattern
 
 
 class ImportFormatter:
-    def __init__(
-            self,
-            root_dir: Path,
-            file_paths: list[Path],
-            ignore_patterns: list["Pattern"],
-    ):
-        self.root_dir = root_dir.resolve()
-        self.file_paths = file_paths
-        self.ignore_patterns = list(set(ignore_patterns))
+    def __init__(self, config: Config):
+        self.root_dir = get_path_from_str(config.root_dir).resolve()
+        self.file_paths = get_paths_from_list(config.file_paths)
+        self.ignore_patterns = list(set([compile(pattern) for pattern in config.ignored_paths]))
+        exit_if_path_is_not_a_dir(self.root_dir)
 
     def convert_relative_imports(self) -> tuple[int, int]:
         scanned, changed = 0, 0

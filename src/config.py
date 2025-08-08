@@ -7,7 +7,7 @@ from src.utils import get_args
 @dataclass
 class Config:
     root_dir: str = "./"
-    is_verbose: bool = False # todo: implement
+    is_verbose: bool = False
     file_paths: list[str] = field(default_factory=list)
     ignored_paths: list[str] = field(default_factory=list)
 

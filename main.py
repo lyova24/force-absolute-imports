@@ -4,8 +4,7 @@ from src.service import ImportFormatter
 
 def main():
     formatter = ImportFormatter(config=config)
-    scanned, changed = formatter.convert_relative_imports()
-    print(f"done! scanned {scanned}; changed {changed};")
+    formatter.convert_relative_imports()
 
 
 if __name__ == '__main__':

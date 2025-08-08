@@ -1,7 +1,7 @@
-- id: force-absolute-imports
+- id: shrimport
   name: Force relative imports to absolute
   description: Convert relative imports to absolute
-  entry: force-absolute-imports
+  entry: shrimport
   language: python
   types: [python]
   additional_dependencies: [libcst>=1.0.0]

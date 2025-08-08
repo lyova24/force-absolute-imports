@@ -1,20 +1,25 @@
-### force-absolute-imports
-![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/lyova24/force-absolute-imports)
+<div align="center">
+    <img src="./docs/images/shrimport.png" width="128" alt="Shrimport Logo">
+    <h3>Shrimport</h3>
+    <p>
+      pre-commit hook for <a href="https://github.com/pre-commit/pre-commit">pre-commit</a>
+      to format relative imports as absolute ones in Python
+    </p>
+    <a href="https://github.com/lyova24/shrimport/tags">
+      <img src="https://img.shields.io/github/v/tag/lyova24/shrimport" alt="Latest Tag">
+    </a>
+</div>
 
-----
-
-#### About
-**force-absolute-imports** is a pre-commit hook for [pre-commit](https://github.com/pre-commit/pre-commit) to format relative imports as absolute ones in Python.
 
 ----
 
 #### Usage
 ##### Put this to your .pre-commit-config.yaml
 ```yaml
-  - repo: https://github.com/lyova24/force-absolute-imports
-    rev: v0.0.3 # or any other version-tag/commit
+  - repo: https://github.com/lyova24/shrimport
+    rev: v0.0.4 # or any other version-tag/commit
     hooks:
-      - id: force-absolute-imports
+      - id: shrimport
 ```
 
 ##### Arguments
@@ -25,12 +30,11 @@
 
 ##### Example of arguments usage in your .pre-commit-config.yaml
 ```yaml
-  - repo: https://github.com/lyova24/force-absolute-imports
-    rev: v0.0.3
+  - repo: https://github.com/lyova24/shrimport
+    rev: v0.0.4
     hooks:
-      - id: force-absolute-imports
+      - id: shrimport
         args:
           - '--root-dir=./app' # example of --root-dir usage
-          - '--ignore=__init__\.py$' # example of --ignore usage
           - '--ignore=test/*' # example of --ignore usage
 ```

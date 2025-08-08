@@ -3,10 +3,10 @@ from pathlib import Path
 import pytest
 
 from src.utils.path import (
+    exit_if_path_is_not_a_dir,
+    get_module_path,
     get_path_from_str,
     get_paths_from_list,
-    get_module_path,
-    exit_if_path_is_not_a_dir,
 )
 
 

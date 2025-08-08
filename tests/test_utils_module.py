@@ -1,6 +1,6 @@
 import libcst as cst
 
-from src.utils.module import make_module_attr, get_full_module_name
+from src.utils.module import get_full_module_name, make_module_attr
 
 
 def test_make_module_attr_none():

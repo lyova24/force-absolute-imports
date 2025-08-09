@@ -11,19 +11,40 @@ on:
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ "3.10", "3.11", "3.12", "3.13" ]
+
     steps:
-      - name: Checkout code
+      - name: checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install package
+      - name: install dependencies for pyenv
         run: |
+          sudo apt-get update
+          sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
+            libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+            xz-utils tk-dev libffi-dev liblzma-dev git
+
+      - name: install pyenv
+        run: |
+          curl https://pyenv.run | bash
+
+      - name: setup python, dependencies and run tests
+        shell: bash
+        run: |
+          export PYENV_ROOT="$HOME/.pyenv"
+          export PATH="$PYENV_ROOT/bin:$PATH"
+          eval "$(pyenv init --path)"
+          eval "$(pyenv init -)"
+
+          pyenv install -s ${{ matrix.python-version }}
+          pyenv global ${{ matrix.python-version }}
+
+          python --version
           python -m pip install --upgrade pip
           pip install -e .[test]
 
-      - name: Run tests
-        run: pytest -v
+          pytest
